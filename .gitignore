@@ -86,6 +86,19 @@ celerybeat-schedule
 .venv
 venv/
 ENV/
+pypy
+
+# virtualenv
+pip-selfcheck.json
+include/
+lib/
+share/
+bin/
+
+# shouldn't be here, but just in case
+#db.sqlite3
+#static/
+#static/*
 
 # Spyder project settings
 .spyderproject
