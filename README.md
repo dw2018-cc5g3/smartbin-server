@@ -15,7 +15,7 @@ First create a GitHub account and apply for access to the code (we'll call this 
 
 Then clone the repository to your computer. In PyCharm, from the default screen, select "check out from version control". The simplest way to connect PyCharm to your GitHub account is to select the GitHub option and enter your username and password.[^1]
 
-Make edits as normal. Then when ready to upload your code, click on "VCS" > "Commit Changes...", select the files you want to upload, enter a descriptive message about the changes you made, then click on "Commit".
+Make edits as normal. Then when ready to upload your code, click on "VCS" > "Commit Changes...", select the files you want to upload, enter a descriptive message about the changes you made, then select "Commit" > "Commit and Push".
 
 Advanced Git features like branch, revert, merge, stash, diff, etc are. worth the time and effort to learn if you are thinking about ISTD/CSD/whatever it's called nowadays, or simply going to work on other, bigger code projects in the future.
 
