@@ -13,11 +13,11 @@ from db_interface import db_interface_pg as dbi
 def get_user_by_can(can_dirty):
     try:
         response_raw = dbi.get_user_by_can(can_dirty, as_json=True)
-        if response_raw == '':
-            return jsonify(error='no user')
-        else:
+        if response_raw:
             return Response(response_raw,
                             mimetype='application/json')
+        else:
+            return jsonify(error='no user')
     except ValueError as e:
         return jsonify(error=e.args[0])
 
