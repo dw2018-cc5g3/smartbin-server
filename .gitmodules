@@ -1,0 +1,3 @@
+[submodule "db_interface"]
+	path = db_interface
+	url = https://github.com/dw2018-cc5g3/db_interface
