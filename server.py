@@ -72,3 +72,21 @@ def create_item():
         return jsonify(item_id=item_id)
     except ValueError as e:
         return jsonify(error=e.args[0])
+
+
+@app.route('/item/by_can', methods=['POST'])
+def create_item_by_can():
+    try:
+        params_raw = request.get_json()
+        params = {k: v for k, v in params_raw.items()
+                  if k in ('score', 'mass', 'category', 'depositing_can')}
+
+        if len(params) != 4:
+            raise ValueError('Parameter error')
+
+        item_id = dbi.create_item_by_can(**params)
+
+        return jsonify(item_id=item_id)
+    except ValueError as e:
+        return jsonify(error=e.args[0])
+
