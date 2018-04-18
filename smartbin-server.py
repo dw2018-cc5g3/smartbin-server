@@ -2,7 +2,7 @@
 
 """
 
-from flask import Flask, Response, jsonify
+from flask import Flask, Response, jsonify, request
 app = Flask(__name__)
 from pprint import pformat
 
@@ -18,7 +18,7 @@ def get_user_by_can(can_dirty):
         return jsonify(error=e.args[0])
 
 
-@app.route('/items/by_user/<user_id>')
+@app.route('/item/by_user/<int:user_id>')
 def get_user_items(user_id):
     try:
         return Response(dbi.get_user_items(user_id, as_json=True),
@@ -33,3 +33,38 @@ def leaderboard():
                     mimetype='application/json')
 
 
+@app.route('/user', methods=['POST'])
+def create_user():
+    try:
+        params_raw = request.get_json()
+        params = {k: v for k, v in params_raw.items()
+                  if k in ('can', 'name', 'display_name', 'phone_number')}
+
+        if len(params) != 4:
+            raise ValueError('Parameter error')
+
+        user_id = dbi.create_user(
+            **params,
+            active=True
+        )
+
+        return jsonify(user_id=user_id)
+    except ValueError as e:
+        return jsonify(error=e.args[0])
+
+
+@app.route('/item', methods=['POST'])
+def create_item():
+    try:
+        params_raw = request.get_json()
+        params = {k: v for k, v in params_raw.items()
+                  if k in ('score', 'mass', 'category', 'deposited_by')}
+
+        if len(params) != 4:
+            raise ValueError('Parameter error')
+
+        item_id = dbi.create_item(**params)
+
+        return jsonify(item_id=item_id)
+    except ValueError as e:
+        return jsonify(error=e.args[0])
