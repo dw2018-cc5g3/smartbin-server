@@ -2,7 +2,7 @@
 Quick and dirty server between db and kivy
 """
 
-from flask import Flask, Response, jsonify, request
+from flask import Flask, Response, jsonify, request, render_template
 from db_interface import db_interface_pg as dbi
 
 app = Flask(__name__)
@@ -50,12 +50,10 @@ def leaderboard():
     """
     Returns the leaderboard.
 
-    This is emitted as raw JSON for now but later we'll use render_template to
-    get a pretty leaderboard
+    This is run through the template to get a pretty html output
     :return:
     """
-    return Response(dbi.get_leaderboard(as_json=True),
-                    mimetype='application/json')
+    return render_template('leaderboard.html', result=dbi.get_leaderboard())
 
 
 @app.route('/user', methods=['POST'])

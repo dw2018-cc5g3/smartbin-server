@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Bin Leaderboard</title>
+</head>
+<body>
+<h1>Smart Bin Leaderboard</h1>
+<table>
+    {% for row in result %}
+        <tr>
+            <td>{{ row['display_name'] }}</td>
+            <td>{{ row['score_sum'] }}</td>
+        </tr>
+    {% endfor %}
+</table></body>
+</html>
