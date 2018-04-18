@@ -12,8 +12,12 @@ from db_interface import db_interface_pg as dbi
 @app.route('/user/<can_dirty>')
 def get_user_by_can(can_dirty):
     try:
-        return Response(dbi.get_user_by_can(can_dirty, as_json=True),
-                        mimetype='application/json')
+        response_raw = dbi.get_user_by_can(can_dirty, as_json=True)
+        if response_raw == '':
+            return jsonify(error='no user')
+        else:
+            return Response(response_raw,
+                            mimetype='application/json')
     except ValueError as e:
         return jsonify(error=e.args[0])
 
