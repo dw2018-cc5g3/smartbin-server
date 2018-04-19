@@ -53,7 +53,7 @@ def leaderboard():
     This is run through the template to get a pretty html output
     :return:
     """
-    return render_template('leaderboard.html', result=dbi.get_leaderboard())
+    return render_template('full-screen-table.html', result=dbi.get_leaderboard())
 
 
 @app.route('/user', methods=['POST'])
@@ -128,3 +128,5 @@ def create_item_by_can():
     except ValueError as e:
         return jsonify(error=e.args[0])
 
+if __name__ == "__main__":
+    app.run()
