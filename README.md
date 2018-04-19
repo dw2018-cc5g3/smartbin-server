@@ -29,7 +29,7 @@ Data layer is probably going to be SQLite or similar lightweight relational DB s
 
 For development and testing it is probably sufficient to run the server on your own computer and point the client to your computer (you may need to be on the same wifi network to do this).
 
-Deployment can be done on [Heroku](https://www.heroku.com/) (which does not support SQLite but supports PostgreSQL, which is much more powerful beast) or alternatively on my own lepak.sg server which does have a [Heroku-like deployment interface](http://dokku.viewdocs.io/dokku/).
+Deployment can be done on [Heroku](https://www.heroku.com/) (which does not support SQLite but supports PostgreSQL, which is much more powerful beast) or alternatively on my own server which does have a [Heroku-like deployment interface](http://dokku.viewdocs.io/dokku/).
 
 ### Virtual environment
 
